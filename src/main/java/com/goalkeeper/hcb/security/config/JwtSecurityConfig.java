@@ -1,6 +1,5 @@
 package com.goalkeeper.hcb.security.config;
- 
-import org.slf4j.Logger;
+  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean; 
 import org.springframework.context.annotation.Configuration;
@@ -89,6 +88,7 @@ public  class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
                         .authenticated();
 
         // Add our custom JWT security filter
+        http.addFilter(new UsernamePasswordAuthenticationFilter());
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
